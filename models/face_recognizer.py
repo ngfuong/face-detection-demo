@@ -1,5 +1,4 @@
 import os
-import time
 import glob
 
 import cv2
@@ -19,7 +18,7 @@ class FaceRecognizer:
         self.face_data = self.load_faces()
 
     def run(self, image):
-        features, faces = self.recognize_faces(image)
+        features, faces = self.get_face_feats(image)
         if faces is not None:
             for idx, (face, feature) in enumerate(zip(faces, features)):
                 result, user = self.match(feature, self.face_data)
@@ -37,8 +36,8 @@ class FaceRecognizer:
                             color, thickness, cv2.LINE_AA)      
         return image
 
-    def recognize_faces(self, image):
-        faces = self.detect_faces(image)
+    def get_face_feats(self, image):
+        _, faces = self.detect_faces(image)
         faces = [] if faces is None else faces
         features = []
         # rts = time.time()
@@ -49,7 +48,7 @@ class FaceRecognizer:
         
         return features, faces
 
-    def match(self, feature_comp, face_data):
+    def match(self, feature_comp, face_data:dict):
         max_score = 0.0
         sim_user_id = ""
         for user_id, feature in zip(face_data.keys(), face_data.values()):
@@ -66,10 +65,10 @@ class FaceRecognizer:
         # dts = time.time()
         h, w, _ = image.shape
         self.detector.setInputSize((w, h))
-        _, faces = self.detector.detect(image)
+        num_faces, faces = self.detector.detect(image)
         # print(f'time detection  = {time.time() - dts}')
 
-        return faces
+        return num_faces, faces
 
     def load_faces(self, data_dir="images"):
         # Get registered photos and return as npy files
@@ -85,7 +84,7 @@ class FaceRecognizer:
         files = list(set(files))
         for file in tqdm(files):
             image = cv2.imread(file)
-            features, faces = self.recognize_faces(image)
+            features, faces = self.get_face_feats(image)
             if faces is None:
                 continue
             user_id = os.path.splitext(os.path.basename(file))[0]
