@@ -8,7 +8,7 @@
 Create virtual env and install packages
 ```
 python -m venv .env
-.env\Script\activate # For Windows
+.env\Scripts\activate # For Windows
 pip install -r requirements.txt
 ```
 Run application
