@@ -5,7 +5,11 @@
 * Capture image from webcam to add to recognization model.
 
 # Installation
-Create virtual env and install packages
+Clone repository. Cloning can take a while because of the model weights in `models\weights`
+```
+git clone https://github.com/ngfuong/face-detection-demo.git
+```
+Create virtual environment and install packages
 ```
 python -m venv .env
 .env\Scripts\activate # For Windows
