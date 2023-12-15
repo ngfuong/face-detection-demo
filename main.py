@@ -30,11 +30,12 @@ class WebcamViewer(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(DEFAULT_PAGE_IDX)
         self.drop_shadow(self.ui.webcam)
 
-        self.detection = False
         self.ui.capture_button.clicked.connect(self.capture_face)
         self.ui.ok_button.clicked.connect(self.ok_button_clicked)
+        
+        self.detection = False
         self.face_recognizer = FaceRecognizer(root=LOCAL_DIR)
-        self.setup_face_reg()
+        self.setup_webcam()
     
     def capture_face(self):
         self.ui.stackedWidget.setCurrentIndex(CAPTURE_PAGE_IDX)
@@ -62,8 +63,6 @@ class WebcamViewer(QMainWindow):
                 msg = "No face detected"
             else:
                 msg = "Too many faces"
-            # self.ui.stackedWidget.setCurrentIndex(SUCCESSFUL_PAGE_IDX)
-            # self.ui.message.setText(msg)
 
     def save_data(self, image):
         label = self.ui.name_input.text().strip()
@@ -77,7 +76,7 @@ class WebcamViewer(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(SUCCESSFUL_PAGE_IDX)
         self.ui.message.setText(msg)
     
-    def setup_face_reg(self):
+    def setup_webcam(self):
         DEFAULT_CAMERA = 0
         self.capture = cv2.VideoCapture(DEFAULT_CAMERA)
         self.ui.detect_button.clicked.connect(self.detection_toggle)
@@ -85,9 +84,6 @@ class WebcamViewer(QMainWindow):
         self.timer.start(30)
 
     def update_frame(self, detection=False):
-        """
-        RECOGNIZER
-        """
         ret, frame = self.capture.read()
         frame = cv2.flip(frame, 1)
 
@@ -100,7 +96,6 @@ class WebcamViewer(QMainWindow):
 
             # Create QImage
             qt_img = QImage(rgb_img.data, w, h, ch*w, QImage.Format.Format_RGB888)
-            # self.ui.webcam.setPixmap(QPixmap.fromImage(qt_img).scaled(self.label_w, self.label_h, Qt.AspectRatioMode.KeepAspectRatioByExpanding))
             self.ui.webcam.setPixmap(QPixmap.fromImage(qt_img))
         else:
             # print("Error capturing frame")
@@ -123,6 +118,9 @@ class WebcamViewer(QMainWindow):
         self.timer.start(30)
     
     def drop_shadow(self, target_widget:QWidget):
+        """
+        Drop Shadow effect
+        """
         effect = QGraphicsDropShadowEffect(target_widget)
         effect.setColor(QColorConstants.Black)
         effect.setOffset(0,5)

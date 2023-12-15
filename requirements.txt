@@ -1,0 +1,7 @@
+colorama==0.4.6
+numpy==1.26.2
+opencv-contrib-python==4.8.1.78
+PyQt6==6.6.1
+PyQt6-Qt6==6.6.1
+PyQt6-sip==13.6.0
+tqdm==4.66.1

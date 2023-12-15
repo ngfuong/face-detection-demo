@@ -71,9 +71,6 @@ class FaceRecognizer:
         return num_faces, faces
 
     def load_faces(self, data_dir="images"):
-        # Get registered photos and return as npy files
-        # File name = id name, embeddings of a photo is the representative for the id
-        # If many files have the same name, an average embedding is used
         dictionary = {}
         # the tuple of file types, please ADD MORE if you want
         types = ('*.jpg', '*.png')
