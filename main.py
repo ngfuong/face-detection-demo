@@ -152,10 +152,13 @@ class WebcamViewer(QMainWindow):
                 self.ui.msg_button.setDisabled(True)
             else:
                 id_name = id_name.split("_")[1]
-                self.DETECT_MSG = f"Login as {id_name}"
+                self.DETECT_MSG = f"Click to login as {id_name}"
                 self.ui.msg_button.clicked.connect(lambda: self.login_successful(name=id_name))
                 self.ui.msg_button.setDisabled(False)
                 self.ui.msg_button.setStyleSheet("""
+                                                QPushButton {
+                                                 font-size: 24px;
+                                                }
                                                 QPushButton:hover {
                                                  text-decoration: underline;
                                                 }
