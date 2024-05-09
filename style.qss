@@ -1,21 +1,35 @@
 #MainWindow {
-    border-image: url("assets/background_dark.jpg") 0 0 0 0 stretch;
-    /* background-color: rgb(240, 240, 240); */
+    /* border-image: url("assets/background_dark.jpg") 0 0 0 0 stretch; */
+    background-color: #f1f1f1;
+}
+
+QFrame {
+    border: none;
+}
+
+#msg_button {
+    color: #000;
+    background: #f1f1f1;
+    border: none;
+}
+
+#login_as_button:hover {
+    text-decoration: underline;
 }
 
 QPushButton {
     color: #fff;
-    background: #5551ff;
+    background: #000;
     border: none;
     font-weight: 800;
     border-radius: 10%;
 }
 
 QPushButton:hover {
-    background: #c82af8;
+    background: #2e2e2e;
     color: #fff;
 }
 
 #message {
-    color: #fff;
+    color: #000;
 }

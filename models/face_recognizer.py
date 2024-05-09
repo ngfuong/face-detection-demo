@@ -10,7 +10,7 @@ COSINE_THRESHOLD = 0.5
 class FaceRecognizer:
     def __init__(self, root):
         self.root = root
-        WEIGHTS_DIR = os.path.join(root, "models\weights")
+        WEIGHTS_DIR = os.path.join(root, "models/weights")
         DETECTOR_WEIGHTS = os.path.join(WEIGHTS_DIR, "yunet_s_640_640.onnx")
         self.detector = cv2.FaceDetectorYN_create(DETECTOR_WEIGHTS, "", (0, 0))
         RECOGNIZER_WEIGHTS = os.path.join(WEIGHTS_DIR, "face_recognizer_fast.onnx")
@@ -19,6 +19,9 @@ class FaceRecognizer:
 
     def run(self, image):
         features, faces = self.get_face_feats(image)
+        id_name = None
+        score = None
+        
         if faces is not None:
             for idx, (face, feature) in enumerate(zip(faces, features)):
                 result, user = self.match(feature, self.face_data)
@@ -31,10 +34,10 @@ class FaceRecognizer:
                 text = "{0} ({1:.2f})".format(id_name, score)
                 position = (box[0], box[1] - 10)
                 font = cv2.FONT_HERSHEY_SIMPLEX
-                scale = 0.6
+                scale = 1
                 image = cv2.putText(image, text, position, font, scale,
                             color, thickness, cv2.LINE_AA)      
-        return image
+        return image, id_name, score
 
     def get_face_feats(self, image):
         _, faces = self.detect_faces(image)
