@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>758</width>
-    <height>572</height>
+    <height>612</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -32,6 +32,12 @@
     </property>
     <item>
      <widget class="QStackedWidget" name="topStackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -536,7 +542,14 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="login_success_page"/>
+      <widget class="QWidget" name="login_success_page">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>

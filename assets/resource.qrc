@@ -1,0 +1,25 @@
+<RCC>
+  <qresource prefix="img">
+    <file>img/add_alert_FILL0_wght400_GRAD0_opsz48.png</file>
+    <file>img/add_alert_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/archive_FILL0_wght400_GRAD0_opsz48.png</file>
+    <file>img/attach_file_add_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/attach_file_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/bookmark_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/icons8-archive-64.png</file>
+    <file>img/icons8-setting-64.png</file>
+    <file>img/icons8-trash-can-64.png</file>
+    <file>img/image_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/imagesmode_FILL0_wght400_GRAD0_opsz48.png</file>
+    <file>img/keyboard_voice_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/more_vert_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/movie_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/palette_FILL0_wght400_GRAD0_opsz48.png</file>
+    <file>img/palette_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/person_add_FILL0_wght400_GRAD0_opsz48.png</file>
+    <file>img/person_add_FILL1_wght400_GRAD0_opsz48.png</file>
+    <file>img/redo_FILL0_wght400_GRAD0_opsz48.png</file>
+    <file>img/spaces_-MWcLXaW6te9yNIG__kn_avatar-1616661413606.png</file>
+    <file>img/undo_FILL0_wght400_GRAD0_opsz48.png</file>
+  </qresource>
+</RCC>
